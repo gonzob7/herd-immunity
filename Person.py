@@ -21,4 +21,7 @@ class Person:
         '''
 
         #TODO: finish this method
+        random_num = randint(0.0,1.0)
+        if random_num < self.infection.mortality_num:
+            self.is_alive = False
         pass
