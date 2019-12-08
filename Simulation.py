@@ -64,6 +64,14 @@ class Simulation:
         If there are no more infected people left and everyone is either vaccinated or dead return False
         In all other cases return True'''
         #TODO: finish this method
+        if self.population == 0:
+            return False
+        elif self.population_size == self.total_vaccinated:
+            return False
+        elif len(self.infected_population) == 0:
+            return False
+        else:
+            return True
 
 
     def run(self):
