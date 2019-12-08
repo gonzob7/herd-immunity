@@ -14,6 +14,7 @@ class Simulation:
         self.initial_vaccinated = initial_vaccinated
 
         self.population = []
+        self.infected_population = []
 
         self.population_size = initial_infected + initial_healthy + initial_vaccinated
 
@@ -51,7 +52,10 @@ class Simulation:
     def get_infected(self):
         '''Gets all the infected people from the population and returns them as a list'''
         #TODO: finish this method
-
+        for person in self.population:
+            if person.infection:
+                person.append(self.infected_population)
+            return self.infected_population
 
     def simulation_should_continue(self):
         '''Determines whether the simulation should continue.
