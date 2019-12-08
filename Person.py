@@ -26,7 +26,7 @@ class Person:
             self.is_alive = False
             return False
         else:
-            self.vaccinated = true
+            self.vaccinated = True
             self.infection = None
             return True
 
