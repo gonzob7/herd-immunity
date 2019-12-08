@@ -139,6 +139,17 @@ class Simulation:
             if the random float is less then the infected person's virus reproduction number then the random person is infected
             othersie the random person is vaccinated and one is added to the total vaccinated'''
         #TODO: finish this method
+        if random_person == infected:
+            return
+        elif random_person.is_vaccinated == True:
+            return
+        elif random_person.is_vaccinated == False:
+            rand_float = random.random()
+            if rand_float < random_person.reproduction_num:
+                random_person.infection = self.virus
+            else:
+                random_person.is_vaccinated = True
+                total_vaccinated += 1
 
 
 
