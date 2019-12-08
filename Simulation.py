@@ -43,7 +43,11 @@ class Simulation:
     def print_population(self):
         '''Prints out every person in the population and their current attributes'''
         #TODO: finish this method
-
+        for person in population:
+            print(person.is_alive)
+            print(person.is_vaccinated)
+            print(person.infection)
+            
     def get_infected(self):
         '''Gets all the infected people from the population and returns them as a list'''
         #TODO: finish this method
