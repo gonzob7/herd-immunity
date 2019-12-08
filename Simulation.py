@@ -109,8 +109,11 @@ class Simulation:
         if it returns false then the person is no longer alive, does not have an infection and one is added to total dead
         if it returns true then the person no longer has an infection and is vaccinated, one is added to total vaccinated'''
         #TODO: finish this method
-
-
+        for person in self.infected_population:
+            if did_survive_infection():
+                self.total_vaccinated += 1
+            else:
+                self.total_dead += 1
 
     def time_step(self, infected):
         ''' For every infected person interact with a random person from the population 10 times'''
