@@ -29,5 +29,3 @@ class Person:
             self.vaccinated = True
             self.infection = None
             return True
-
-        pass

@@ -52,10 +52,12 @@ class Simulation:
     def get_infected(self):
         '''Gets all the infected people from the population and returns them as a list'''
         #TODO: finish this method
+        total_infected = []
         for person in self.population:
-            if person.infection:
-                person.append(self.infected_population)
-            return self.infected_population
+            if person.infection != None:
+                total_infected.append(person)
+                return total_infected
+
 
     def simulation_should_continue(self):
         '''Determines whether the simulation should continue.
@@ -64,14 +66,11 @@ class Simulation:
         If there are no more infected people left and everyone is either vaccinated or dead return False
         In all other cases return True'''
         #TODO: finish this method
-        if self.population == 0:
-            return False
-        elif self.population_size == self.total_vaccinated:
-            return False
-        elif len(self.infected_population) == 0:
-            return False
-        else:
-            return True
+        for person in self.population:
+            if person.is_alive == False or person.is_vaccinated == True:
+                return False
+            else:
+                return True
 
 
     def run(self):
@@ -110,10 +109,12 @@ class Simulation:
         if it returns true then the person no longer has an infection and is vaccinated, one is added to total vaccinated'''
         #TODO: finish this method
         for person in infected:
-            if did_survive_infection():
-                self.total_vaccinated += 1
-            else:
+            if person.did_survive_infection() == False:
                 self.total_dead += 1
+            else:
+                person.is_vaccinated = True
+                self.total_vaccinated += 1
+
 
     def time_step(self, infected):
         ''' For every infected person interact with a random person from the population 10 times'''
@@ -122,11 +123,11 @@ class Simulation:
 
             for i in range(10):
                 #TODO: get a random index for the population list
-                rand_index = random.choice(self.population)
+                rand_index = random.randint(0, len(self.population)-1)
                 #TODO: using the random index get a random person from the population
                 rand_person = self.population[rand_index]
                 #TODO: call interaction() with the current infected person and the random person
-                interaction(infected_person, rand_person)
+                self.interaction(infected_person, rand_person)
                 pass
 
 
@@ -139,34 +140,30 @@ class Simulation:
             if the random float is less then the infected person's virus reproduction number then the random person is infected
             othersie the random person is vaccinated and one is added to the total vaccinated'''
         #TODO: finish this method
-        if random_person == infected:
-            return
-        elif random_person.is_vaccinated == True:
-            return
+        if infected == random_person or random_person.is_alive == False or random_person.is_vaccinated == True:
+            pass
         elif random_person.is_vaccinated == False:
-            rand_float = random.random()
-            if rand_float < random_person.reproduction_num:
+            random_num = random.random()
+            if random_num <= self.virus.reproduction_num:
                 random_person.infection = self.virus
+                return random_person
             else:
                 random_person.is_vaccinated = True
-                total_vaccinated += 1
-
-
-
+                return random_person
 
 
 
 if __name__ == "__main__":
 
     #Set up the initial simulations values
-    virus_name = "Malaise"
-    reproduction_num = 0.20
-    mortality_num = .99
+    virus_name = "HIV"
+    reproduction_num = 0.50
+    mortality_num = 0.30
 
-    initial_healthy = 10
-    initial_vaccinated = 5
+    initial_healthy = 100
+    initial_vaccinated = 20
 
-    initial_infected = 1
+    initial_infected = 50
 
     virus = Virus(virus_name, reproduction_num, mortality_num)
 
