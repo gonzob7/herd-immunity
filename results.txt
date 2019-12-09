@@ -1,10 +1,10 @@
 Simulation for virus: HIV
 Reproduction Number: 0.5, Mortality Number: 0.3
-Population Size: 170
-Initial Vaccinated: 20
-Initial Healthy: 100
-Initial Infected: 50
+Population Size: 17
+Initial Vaccinated: 2
+Initial Healthy: 10
+Initial Infected: 5
 
-Simulation Ended after 6 turns
-Total Dead: 4
-Total Vaccinated: 22
+Simulation Ended after 2 turns
+Total Dead: 1
+Total Vaccinated: 3

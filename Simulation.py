@@ -44,10 +44,18 @@ class Simulation:
     def print_population(self):
         '''Prints out every person in the population and their current attributes'''
         #TODO: finish this method
+        person_id = 1
         for person in self.population:
-            print(person.is_alive)
-            print(person.is_vaccinated)
-            print(person.infection)
+            print(f'person {person_id} is alive?: {person.is_alive}')
+            print(f'person {person_id} is vaccinated?: {person.is_vaccinated}')
+            if person.infection is not None:
+                print(f'person {person_id} is infected?: {virus_name}')
+            else:
+                print(f'person {person_id} is infected?: None')
+            person_id += 1
+            print("-------------------------")
+
+
 
     def get_infected(self):
         '''Gets all the infected people from the population and returns them as a list'''
@@ -160,10 +168,10 @@ if __name__ == "__main__":
     reproduction_num = 0.50
     mortality_num = 0.30
 
-    initial_healthy = 100
-    initial_vaccinated = 20
+    initial_healthy = 10
+    initial_vaccinated = 2
 
-    initial_infected = 50
+    initial_infected = 5
 
     virus = Virus(virus_name, reproduction_num, mortality_num)
 
