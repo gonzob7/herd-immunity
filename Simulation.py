@@ -60,11 +60,11 @@ class Simulation:
     def get_infected(self):
         '''Gets all the infected people from the population and returns them as a list'''
         #TODO: finish this method
-        total_infected = []
+        infected = []
         for person in self.population:
             if person.infection != None:
-                total_infected.append(person)
-                return total_infected
+                infected.append(person)
+                return infected
 
 
     def simulation_should_continue(self):
@@ -163,19 +163,33 @@ class Simulation:
 
 if __name__ == "__main__":
 
-    #Set up the initial simulations values
+    #VIRUS SIMULATION POP 10
     virus_name = "HIV"
     reproduction_num = 0.50
     mortality_num = 0.30
 
-    initial_healthy = 10
+    initial_healthy = 5
     initial_vaccinated = 2
 
-    initial_infected = 5
+    initial_infected = 3
 
     virus = Virus(virus_name, reproduction_num, mortality_num)
 
-    simulation = Simulation(initial_vaccinated, initial_infected, initial_healthy, virus, "results.txt")
+    simulation1 = Simulation(initial_vaccinated, initial_infected, initial_healthy, virus, "results1.txt")
 
+    #VIRUS SIMULATION POP 100
+    virus_name = "CODEFRENZY"
+    reproduction_num = 0.3
+    mortality_num = 0.99
+
+    initial_healthy = 50
+    initial_vaccinated = 40
+
+    initial_infected = 10
+
+    virus = Virus(virus_name, reproduction_num, mortality_num)
+
+    simulation2 = Simulation(initial_vaccinated, initial_infected, initial_healthy, virus, "results2.txt")
     #run the simulation
-    simulation.run()
+    simulation1.run()
+    simulation2.run()

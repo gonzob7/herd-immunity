@@ -1,0 +1,10 @@
+Simulation for virus: CODEFRENZY
+Reproduction Number: 0.3, Mortality Number: 0.99
+Population Size: 100
+Initial Vaccinated: 40
+Initial Healthy: 50
+Initial Infected: 10
+
+Simulation Ended after 9 turns
+Total Dead: 9
+Total Vaccinated: 40
